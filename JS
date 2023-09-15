@@ -1,1 +1,28 @@
+const nav = document.querySelector('#header nav');
+const toggle = document.querySelectorAll('nav .toggle');
+const paragraphJustify = document.querySelector('nav .icon-paragraph-justify');
+const crossIcon = document.querySelector('nav .icon-cross');
 
+for (const element of toggle) {
+    element.addEventListener('click', function () {
+        nav.classList.toggle('show');
+        
+    
+        if (nav.classList.contains('show')) {
+          
+            crossIcon.style.visibility = 'visible';
+            crossIcon.style.opacity = '1';
+        } else {
+          
+            crossIcon.style.visibility = 'hidden';
+            crossIcon.style.opacity = '0';
+        }
+    });
+}
+
+
+paragraphJustify.addEventListener('click', function () {
+ 
+    crossIcon.style.visibility = 'visible';
+    crossIcon.style.opacity = '1';
+});
