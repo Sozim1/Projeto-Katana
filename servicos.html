@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monte Sua Espada</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            margin-bottom: 15px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .option label {
+            margin-right: 10px;
+        }
+
+        .option select {
+            padding: 8px;
+            font-size: 16px;
+        }
+
+        .result {
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .contact-form {
+            margin-top: 50px;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact-form .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .contact-form .form-group input[type="text"],
+        .contact-form .form-group input[type="email"],
+        .contact-form .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contact-form .form-group textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .contact-form .form-group button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .contact-form .form-group button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <h2>Monte Sua Espada</h2>
+            <div class="option">
+                <label for="blade">Lâmina:</label>
+                <select id="blade">
+                    <option value="normal">Normal</option>
+                    <option value="afiada">Afiada</option>
+                    <option value="mágica">Mágica</option>
+                </select>
+            </div>
+            <div class="option">
+                <label for="handle">Cabo:</label>
+                <select id="handle">
+                    <option value="madeira">Madeira</option>
+                    <option value="metal">Metal</option>
+                    <option value="ouro">Ouro</option>
+                </select>
+            </div>
+            <div class="option">
+                <label for="hilt">Empunhadura:</label>
+                <select id="hilt">
+                    <option value="couro">Couro</option>
+                    <option value="aço">Aço</option>
+                    <option value="prata">Prata</option>
+                </select>
+            </div>
+            <div class="result" id="result">Sua espada será uma lâmina normal com cabo de madeira e empunhadura de couro.</div>
+        </div>
+
+        <div class="contact-form">
+            <h2>Entre em Contato</h2>
+            <div class="form-group">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Mensagem:</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Enviar Mensagem</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const bladeSelect = document.getElementById("blade");
+        const handleSelect = document.getElementById("handle");
+        const hiltSelect = document.getElementById("hilt");
+        const resultDiv = document.getElementById("result");
+
+        function updateResult() {
+            const bladeType = bladeSelect.value;
+            const handleType = handleSelect.value;
+            const hiltType = hiltSelect.value;
+
+            resultDiv.textContent = `Sua espada será uma lâmina ${bladeType} com cabo de ${handleType} e empunhadura de ${hiltType}.`;
+        }
+
+        bladeSelect.addEventListener("change", updateResult);
+        handleSelect.addEventListener("change", updateResult);
+        hiltSelect.addEventListener("change", updateResult);
+
+        // Atualiza o resultado inicialmente
+        updateResult();
+    </script>
+</body>
+
+</html>
