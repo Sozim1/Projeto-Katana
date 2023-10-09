@@ -1,28 +1,70 @@
+//onpen and close menu 
 const nav = document.querySelector('#header nav');
 const toggle = document.querySelectorAll('nav .toggle');
 const paragraphJustify = document.querySelector('nav .icon-paragraph-justify');
 const crossIcon = document.querySelector('nav .icon-cross');
+const menu = document.querySelector('nav .menu');
 
 for (const element of toggle) {
     element.addEventListener('click', function () {
-        nav.classList.toggle('show');
-        
+        nav.classList.toggle('show')
     
-        if (nav.classList.contains('show')) {
-          
-            crossIcon.style.visibility = 'visible';
-            crossIcon.style.opacity = '1';
-        } else {
-          
-            crossIcon.style.visibility = 'hidden';
-            crossIcon.style.opacity = '0';
-        }
+    if (nav.classList.contains('show')) {
+        crossIcon.style.visibility = 'visible';
+        crossIcon.style.opacity = '1';
+    } else {
+        crossIcon.style.visibility = 'hidden';
+        crossIcon.style.opacity = '0';
+    }
+})}
+
+
+paragraphJustify.addEventListener('click', function (event) {
+    event.preventDefault(); 
+    toggleMenu();
+});
+
+
+for (const element of toggle) {
+    element.addEventListener('click', function () {
+        toggleMenu();
     });
 }
 
 
-paragraphJustify.addEventListener('click', function () {
- 
-    crossIcon.style.visibility = 'visible';
-    crossIcon.style.opacity = '1';
-});
+const menuItems = menu.querySelectorAll('a');
+for (const menuItem of menuItems) {
+    menuItem.addEventListener('click', function () {
+        nav.classList.remove('show');
+        crossIcon.style.visibility = 'hidden';
+        crossIcon.style.opacity = '0';
+    });
+}
+
+// creation 
+const bladeSelect = document.getElementById("blade");
+const handleSelect = document.getElementById("handle");
+const hiltSelect = document.getElementById("hilt");
+const guardSelect = document.getElementById("guard")
+const resultDiv = document.getElementById("result");
+
+
+function updateResult() {
+    const bladeType = bladeSelect.value;
+    const handleType = handleSelect.value;
+    const hiltType = hiltSelect.value;
+    const guardType = guardSelect.value;
+
+
+    resultDiv.textContent = `Sua espada será uma lâmina ${bladeType} com cabo de ${handleType}, empunhadura de ${hiltType} e guarda mão de ${guardType}.`;
+}
+
+bladeSelect.addEventListener("change", updateResult);
+handleSelect.addEventListener("change", updateResult);
+hiltSelect.addEventListener("change", updateResult);
+guardSelect.addEventListener("change", updateResult);
+
+// Atualiza o resultado inicialmente
+updateResult();
+
+
